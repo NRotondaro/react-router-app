@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { invoices } from '../data/data';
 
 export default function Invoices() {
@@ -10,11 +10,14 @@ export default function Invoices() {
             className='bg-gray-200'
             to={`/invoices/${invoice.number}`}
             key={invoice.number}
+            target='_blank'
           >
             {invoice.name}
           </Link>
         ))}
       </div>
+
+      <Outlet></Outlet>
     </main>
   );
 }

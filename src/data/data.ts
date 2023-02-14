@@ -24,3 +24,7 @@ export const invoices = [
     due: '09/01/1997',
   },
 ];
+
+export function getInvoice(number: number) {
+  return invoices.find((invoice) => invoice.number === number);
+}

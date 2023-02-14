@@ -6,12 +6,14 @@ import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Invoices from './components/invoices';
 import Expenses from './components/expenses';
+import Bills from './components/bills';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<App />}>
         <Route path='/invoices' element={<Invoices />} />
+        <Route path='/invoices/:invoiceId' element={<Bills />} />
         <Route path='/expenses' element={<Expenses />} />
         <Route
           path='*'
