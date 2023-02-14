@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import { invoices } from '../data/data';
 
 export default function Invoices() {
@@ -6,14 +6,15 @@ export default function Invoices() {
     <main className='text-center'>
       <div className='flex flex-col gap-3'>
         {invoices.map((invoice) => (
-          <Link
-            className='bg-gray-200'
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? 'text-red-400 bg-gray-200' : ''
+            }
             to={`/invoices/${invoice.number}`}
             key={invoice.number}
-            target='_blank'
           >
             {invoice.name}
-          </Link>
+          </NavLink>
         ))}
       </div>
 
