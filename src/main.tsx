@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import './index.css';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Invoices from './components/invoices';
-import Expenses from './components/expenses';
-import Bills from './components/bills';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router';
+import { AuthProvider } from './hooks/auth';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter>
-    <Routes>
+  <React.StrictMode>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+    {/* <Routes>
       <Route path='/' element={<App />}>
         <Route path='/invoices' element={<Invoices />}>
           <Route
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           <Route path=':invoiceId' element={<Bills />} />
         </Route>
         <Route path='/expenses' element={<Expenses />} />
+        <Route path='/login' element={<div>Login</div>} />
         <Route
           path='*'
           element={
@@ -33,6 +35,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           }
         />
       </Route>
-    </Routes>
-  </BrowserRouter>
+    </Routes> */}
+  </React.StrictMode>
 );
