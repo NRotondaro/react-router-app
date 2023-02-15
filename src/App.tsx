@@ -3,8 +3,8 @@ import { Link, Outlet } from 'react-router-dom';
 import { AuthConsumer } from './hooks/auth';
 
 function App() {
-  const auth = AuthConsumer();
-  console.log(auth);
+  const { authed, dispatch } = AuthConsumer();
+  console.log(authed);
   return (
     <h1 className='container mx-auto'>
       <nav className='bg-gray-100 flex gap-4'>
