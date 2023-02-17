@@ -1,7 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import { AuthConsumer } from '../hooks/auth';
 
 export default function Login() {
-  const { dispatch } = AuthConsumer();
+  const { authed, dispatch } = AuthConsumer();
+  console.log(authed);
+  const navigate = useNavigate();
   return (
     <div>
       <h1>This is the Login page</h1>
@@ -9,6 +12,7 @@ export default function Login() {
         className='border px-5 bg-indigo-500 text-gray-50 rounded'
         onClick={() => {
           dispatch({ type: 'login' });
+          navigate('/dashboard', { replace: true });
         }}
       >
         Login

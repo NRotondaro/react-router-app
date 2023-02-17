@@ -1,28 +1,37 @@
 import './App.css';
-import { Link, Outlet } from 'react-router-dom';
-import { AuthConsumer } from './hooks/auth';
+import { NavLink, Outlet } from 'react-router-dom';
 
 function App() {
-  const { authed, dispatch } = AuthConsumer();
-  console.log(authed);
   return (
-    <h1 className='container mx-auto'>
+    <main className='container mx-auto space-y-4'>
       <nav className='bg-gray-100 flex gap-4'>
-        <Link to='/invoices'>
+        <NavLink
+          to='/invoices'
+          className={({ isActive }) => (isActive ? 'text-blue-600' : '')}
+        >
           <span>Invoice</span>
-        </Link>
-        <Link to='/expenses'>
+        </NavLink>
+        <NavLink
+          to='/expenses'
+          className={({ isActive }) => (isActive ? 'text-blue-600' : '')}
+        >
           <span>Expenses</span>
-        </Link>
-        <Link to='/dashboard'>
+        </NavLink>
+        <NavLink
+          to='/dashboard'
+          className={({ isActive }) => (isActive ? 'text-blue-600' : '')}
+        >
           <span>Dashboard</span>
-        </Link>
-        <Link to='/login'>
+        </NavLink>
+        <NavLink
+          to='/login'
+          className={({ isActive }) => (isActive ? 'text-blue-600' : '')}
+        >
           <span>Login</span>
-        </Link>
+        </NavLink>
       </nav>
       <Outlet></Outlet>
-    </h1>
+    </main>
   );
 }
 
