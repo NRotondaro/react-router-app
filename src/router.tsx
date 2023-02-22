@@ -5,6 +5,7 @@ import Dashboard from './components/dashboard';
 import Expenses from './components/expenses';
 import Invoices from './components/invoices';
 import Login from './components/login';
+import { RequireAuth } from './components/require-auth';
 
 export const router = createBrowserRouter([
   {
@@ -13,19 +14,24 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/invoices',
-        element: <Invoices />,
+        element: <RequireAuth />,
         children: [
           {
-            index: true,
-            element: (
-              <main className='text-center py-5'>
-                <p>Select an Invoice</p>
-              </main>
-            ),
-          },
-          {
-            path: ':invoiceId',
-            element: <Bills />,
+            element: <Invoices />,
+            children: [
+              {
+                index: true,
+                element: (
+                  <main className='text-center py-5'>
+                    <p>Select an Invoice</p>
+                  </main>
+                ),
+              },
+              {
+                path: ':invoiceId',
+                element: <Bills />,
+              },
+            ],
           },
         ],
       },
@@ -39,7 +45,13 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard',
-        element: <Dashboard />,
+        element: <RequireAuth />,
+        children: [
+          {
+            index: true,
+            element: <Dashboard />,
+          },
+        ],
       },
       {
         path: '*',
